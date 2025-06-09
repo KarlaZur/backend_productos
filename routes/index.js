@@ -1,11 +1,16 @@
+// Importar las rutas de los controladores
 const express = require('express');
 const router = express.Router();
 
-const productoController = require('../controllers/producto.controller');
+const productoRoutes = require('./producto.routes');
+const carritoRoutes = require('./carrito.routes');
+const favoritoRoutes = require('./favoritos.routes');
+const usuarioRoutes = require('./usuario.routes');
 
-// Rutas de productos
-router.get('/productos', productoController.obtenerProductos);
-router.get('/productos/:id', productoController.obtenerProductoPorId);
-router.post('/productos', productoController.crearProducto);
+// Aquí van las rutas definidas previamente
+router.use('/api/productos', productoRoutes);
+router.use('/api/carrito', carritoRoutes);
+router.use('/api/favoritos', favoritoRoutes);
+router.use('/api/usuarios', usuarioRoutes);
 
 module.exports = router;

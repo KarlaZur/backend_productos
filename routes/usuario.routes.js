@@ -6,8 +6,8 @@ router.post('/register', usuarioController.registrarUsuario);
 router.post('/login', usuarioController.loginUsuario);
 router.post('/favoritos', usuarioController.agregarFavorito);
 router.get('/favoritos/:id', usuarioController.obtenerFavoritos);
-
-//router.post('/compras', usuarioController.confirmarCompra);
+router.post('/obtener-id', usuarioController.obtenerIdUsuarioPorEmail);
+router.post('/compras', usuarioController.realizarCompra);
 router.get('/compras/:id', usuarioController.obtenerCompras);
 
 module.exports = router;

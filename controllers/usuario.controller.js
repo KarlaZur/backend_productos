@@ -95,3 +95,22 @@ exports.obtenerFavoritos = async (req, res) => {
     }
   };
   
+
+// Obtener ID de usuario por correo
+  exports.obtenerIdUsuarioPorEmail = async (req, res) => {
+  try {
+    const { email } = req.body; // Asegúrate de pasar el correo en el cuerpo de la solicitud
+
+    // Buscar al usuario por correo
+    const usuario = await Usuario.findOne({ email });
+    
+    if (!usuario) {
+      return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+    }
+
+    // Retornar el ID del usuario
+    res.json({ id: usuario._id });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener el ID del usuario' });
+  }
+};
